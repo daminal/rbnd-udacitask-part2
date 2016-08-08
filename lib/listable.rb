@@ -2,15 +2,14 @@ module Listable
   def format_description(description)
     "#{description}".ljust(30)
   end
-  def format_date(type, options = {})
-  	#puts options
-    if type == "event"
+  def format_date(options = {})
+  	if options.has_key?(:start_date)
     	dates = options[:start_date].strftime("%D") if options[:start_date]
     	dates << " -- " + options[:end_date].strftime("%D") if options[:end_date]
     	dates = "N/A" if !dates
     	return dates
     end
-    if type == "todo"
+    if options.has_key?(:due)
     	options[:due] ? options[:due].strftime("%D") : "No due date"
   	end
   end
