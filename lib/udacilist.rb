@@ -1,7 +1,7 @@
 class UdaciList
   attr_reader :title, :items
 
-  def initialize(options={})
+  def initialize(options={title: "Untitled List"})
     @title = options[:title]
     @items = []
   end

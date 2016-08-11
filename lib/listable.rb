@@ -1,16 +1,16 @@
 module Listable
-  def format_description(description)
+  def format_description(description = "Untitled List")
     "#{description}".ljust(30)
   end
   def format_date(options = {})
   	if options.has_key?(:start_date)
-    	dates = options[:start_date].strftime("%D") if options[:start_date]
-    	dates << " -- " + options[:end_date].strftime("%D") if options[:end_date]
+    	dates = Chronic.parse(options[:start_date]).to_s
+    	dates << " -- " + dates = Chronic.parse(options[:end_date]).to_s if options[:end_date]
     	dates = "N/A" if !dates
     	return dates
     end
     if options.has_key?(:due)
-    	options[:due] ? options[:due].strftime("%D") : "No due date"
+    	options[:due] ? dates = Chronic.parse(options[:due]).to_s : "No due date"
   	end
   end
   def format_priority(priority)
