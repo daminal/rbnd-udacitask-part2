@@ -1,4 +1,4 @@
-#This commit: udacilist.rb: created list.filter('type'); event.rb: reenabled no due date and created self.all; link.rb: made default site name and created self.all; todo.rb: created self.all; listable.rb: created default value for start_date of ''. WHY?
+#This commit: errors.rb: added required error classes. udacilist.rb: called first error.
 #
 # Ideas for improvements
 # 
