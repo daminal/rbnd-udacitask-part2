@@ -1,4 +1,4 @@
-# This commit: general: cleaned up error messages; udacilist.rb: added table-terminal to output of all() and filter(type) and created print_table(rows) to save a couple lines of code.
+# This commit: general: eliminated extra lines of code.
 
 #
 # Ideas for improvements
@@ -19,9 +19,9 @@
 # 
 # 
 # gemfile
-gem 'artii', '2.1.1'
 gem 'chronic', '0.10.2'
 gem 'colorize', '0.8.1'
+gem 'terminal-table' '1.6.0'
 
 # 
 # 

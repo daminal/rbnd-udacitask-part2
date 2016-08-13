@@ -17,7 +17,6 @@ module Listable
     		date = "No due date"
     	end
     	return date
-    	#return "#{(dates < Date.today.strftime('%a %d %b %Y').to_s).to_s}"
   	end
   end
   def format_priority(priority)
