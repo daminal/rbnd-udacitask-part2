@@ -1,4 +1,5 @@
-# This commit: udacilist.rb: add selection(type), a validator func for filter(type) with associated errors. 
+# This commit: general: cleaned up error messages; udacilist.rb: added table-terminal to output of all() and filter(type) and created print_table(rows) to save a couple lines of code.
+
 #
 # Ideas for improvements
 # 

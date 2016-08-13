@@ -16,7 +16,7 @@ class UdaciList
       elsif type == "link"
         @items.push LinkItem.new(description, options)
       else 
-        raise UdaciListErrors::InvalidItemType.new, "#{'Invalid list item type.'.magenta}"
+        raise UdaciListErrors::InvalidItemType.new, 'Invalid list item type.'.magenta
 
       end
     end
@@ -26,7 +26,7 @@ class UdaciList
   def delete(index)
     begin
       if index.next > @items.count
-        raise UdaciListErrors::IndexExceedsListSize.new, "#{'The index exceeds the list size.'.magenta}"
+        raise UdaciListErrors::IndexExceedsListSize.new, 'The index exceeds the list size.'.magenta
       else
         @items.delete_at(index - 1)
       end
@@ -34,17 +34,23 @@ class UdaciList
     rescue StandardError => e
     puts "#{e.class}: #{e.message}"      
   end
+  def print_table(rows)
+    table = Terminal::Table.new :rows => rows
+    puts table
+  end
   def all
-    puts "-" * @title.length
-    puts @title 
-    puts "-" * @title.length
+    rows = []
+    rows << ["-" * @title.length]
+    rows << [@title]
+    rows << ["-" * @title.length]
     if @items.empty?
-      puts "This list is empty." 
+      rows << ["This list is empty."] 
     else
       @items.each_with_index do |item, position|
-        puts "#{position + 1}) #{item.details}"
+        rows << ["#{position + 1}) #{item.details}"]
       end
     end
+    print_table(rows)
   end
   def selection(type)
     unless @@types.include?(type)
@@ -60,12 +66,14 @@ class UdaciList
     end
   end
   def filter(type)
-    puts "-" * @title.length
-    puts "#{@title}: #{type.capitalize}s"
-    puts "-" * @title.length
+    rows = []
+    rows << ["-" * @title.length]
+    rows << ["#{@title}: #{type.capitalize}s"]
+    rows << ["-" * @title.length]
     selection(type).each_with_index do |item, position|
-      puts "#{position + 1}) #{item.details}"
+      rows << ["#{position + 1}) #{item.details}"]
     end
+    print_table(rows)
   end
 end
 

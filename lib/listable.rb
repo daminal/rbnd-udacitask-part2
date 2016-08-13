@@ -30,8 +30,7 @@ module Listable
     elsif !priority
     	return "" 
     else
-    	raise UdaciListErrors::InvalidPriorityValue.new, "#{'Invalid priority value.'.magenta}"
+    	raise UdaciListErrors::InvalidPriorityValue.new, 'Invalid priority value.'.magenta
     end
   end
-
 end
