@@ -1,4 +1,4 @@
-# This commit: General: Used Colorize to highlight errors in magenta
+# This commit: listable.rb: Used Colorize to highlight overdue todos in red.
 #
 # Ideas for improvements
 # 
@@ -31,6 +31,8 @@ gem 'colorize', '0.8.1'
 # 
 # 
 # 
+logic for due date colorizer
+if there is a due date, then parse it, then check whether it's greater than today and colorize it.  Otherwise, "no due date."
 # 
 # 
 # 

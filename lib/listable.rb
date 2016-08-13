@@ -10,8 +10,14 @@ module Listable
     	return dates
     end
     if options[:type] == "todo"
-    	options[:due] ? dates = Chronic.parse(options[:due]).strftime('%a %d %b %Y').to_s : 
-    	"No due date"
+    	if options[:due] 
+    		date = Chronic.parse(options[:due]).strftime('%a %d %b %Y').to_s
+    		Date.today.strftime('%a %d %b %Y').to_s > date ? date = date.red : date = date
+    	else
+    		date = "No due date"
+    	end
+    	return date
+    	#return "#{(dates < Date.today.strftime('%a %d %b %Y').to_s).to_s}"
   	end
   end
   def format_priority(priority)
