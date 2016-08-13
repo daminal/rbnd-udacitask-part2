@@ -11,6 +11,7 @@ require_relative "lib/link"
 
 list = UdaciList.new(title: "Julia's Stuff")
 list.all
+#list.filter("event") #Throws NoItemsError
 list.add("todo", "Buy more cat food", due: "2016-02-03", priority: "low")
 list.add("todo", "Sweep floors", due: "2016-01-30")
 list.add("todo", "Buy groceries", priority: "high")
@@ -52,4 +53,6 @@ new_list.add("event", "Vacation", end_date: "Dec 30")
 new_list.add("todo", "Take a break", due: "January 1, 2016")
 
 new_list.all
+new_list.filter("prevent")
+
 

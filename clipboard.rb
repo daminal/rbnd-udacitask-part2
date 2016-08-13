@@ -1,4 +1,4 @@
-# This commit: listable.rb: Used Colorize to highlight overdue todos in red.
+# This commit: udacilist.rb: add selection(type), a validator func for filter(type) with associated errors. 
 #
 # Ideas for improvements
 # 

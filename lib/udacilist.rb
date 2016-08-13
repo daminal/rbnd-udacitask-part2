@@ -1,5 +1,6 @@
 class UdaciList
   attr_reader :title, :items
+  @@types = ['event', 'todo', 'link']
   def initialize(options={title: "Untitled List"})
     @title = options[:title]
     @items = []
@@ -45,14 +46,24 @@ class UdaciList
       end
     end
   end
+  def selection(type)
+    unless @@types.include?(type)
+      raise UdaciListErrors::NoTypeError, 'There is no such item type.'.magenta
+    end
+    selections = LinkItem.all if type == "link"
+    selections = EventItem.all if type == "event"
+    selections = TodoItem.all if type == "todo"
+    unless selections.any?
+      raise UdaciListErrors::NoItemsError, 'This list contains no items of this type.'.magenta
+    else
+      return selections
+    end
+  end
   def filter(type)
     puts "-" * @title.length
     puts "#{@title}: #{type.capitalize}s"
     puts "-" * @title.length
-    selections = LinkItem.all if type == "link"
-    selections = EventItem.all if type == "event"
-    selections = TodoItem.all if type == "todo"
-    selections.each_with_index do |item, position|
+    selection(type).each_with_index do |item, position|
       puts "#{position + 1}) #{item.details}"
     end
   end

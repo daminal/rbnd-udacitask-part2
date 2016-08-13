@@ -33,7 +33,5 @@ module Listable
     	raise UdaciListErrors::InvalidPriorityValue.new, "#{'Invalid priority value.'.magenta}"
     end
   end
-  def all
 
-  end
 end
