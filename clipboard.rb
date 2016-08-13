@@ -1,4 +1,4 @@
-#This commit: errors.rb: added required error classes. udacilist.rb: called first error.
+#This commit: listable.rb: fixed format_priority(priority) to respond to priority, not @priority
 #
 # Ideas for improvements
 # 
