@@ -8,3 +8,6 @@ module UdaciListErrors
 	class InvalidDateError < StandardError
 	end
 end
+
+# The question is, how do I use a module to format errors if I have a module holding 
+# the classes?

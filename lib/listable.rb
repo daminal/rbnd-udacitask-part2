@@ -10,7 +10,8 @@ module Listable
     	return dates
     end
     if options[:type] == "todo"
-    	options[:due] ? dates = Chronic.parse(options[:due]).strftime('%a %d %b %Y').to_s : "No due date"
+    	options[:due] ? dates = Chronic.parse(options[:due]).strftime('%a %d %b %Y').to_s : 
+    	"No due date"
   	end
   end
   def format_priority(priority)
@@ -23,7 +24,7 @@ module Listable
     elsif !priority
     	return "" 
     else
-    	raise UdaciListErrors::InvalidPriorityValue.new, 'Invalid priority value.'
+    	raise UdaciListErrors::InvalidPriorityValue.new, "#{'Invalid priority value.'.magenta}"
     end
   end
   def all

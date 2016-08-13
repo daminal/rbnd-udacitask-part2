@@ -6,6 +6,7 @@ class UdaciList
   end
   def add(type, description, options={})
     type = type.downcase
+    error_color = 'red'
     begin
       if type == "todo"
         @items.push TodoItem.new(description, options)
@@ -14,7 +15,8 @@ class UdaciList
       elsif type == "link"
         @items.push LinkItem.new(description, options)
       else 
-        raise UdaciListErrors::InvalidItemType.new, 'Invalid list item type.'
+        raise UdaciListErrors::InvalidItemType.new, "#{'Invalid list item type.'.magenta}"
+
       end
     end
     rescue StandardError => e
@@ -23,7 +25,7 @@ class UdaciList
   def delete(index)
     begin
       if index.next > @items.count
-        raise UdaciListErrors::IndexExceedsListSize.new, 'The index exceeds the list size.'
+        raise UdaciListErrors::IndexExceedsListSize.new, "#{'The index exceeds the list size.'.magenta}"
       else
         @items.delete_at(index - 1)
       end

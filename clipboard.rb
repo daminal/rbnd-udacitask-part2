@@ -1,4 +1,4 @@
-# This commit: listable.rb: changed format_date to omit time of day. 
+# This commit: General: Used Colorize to highlight errors in magenta
 #
 # Ideas for improvements
 # 
@@ -8,6 +8,7 @@
 # Raise error if call udacilist.rb with an improper option.
 #
 # Listable (creates list)
+#
 # 
 # note.rb 
 # Create a "note" type.
@@ -16,11 +17,15 @@
 # 
 # 
 # 
+# gemfile
+gem 'artii', '2.1.1'
+gem 'chronic', '0.10.2'
+gem 'colorize', '0.8.1'
+
 # 
 # 
-# 
-# 
-# 
+# Questions
+# listable.rb: format_date: Why did I have to have "return dates" rather than just "dates"
 # 
 # 
 # 
