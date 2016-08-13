@@ -4,13 +4,13 @@ module Listable
   end
   def format_date(options = {})
   	if options[:type] == "event"
-    	dates = options[:start_date] ? Chronic.parse(options[:start_date]).to_s : ""
-    	dates << " -- " + dates = Chronic.parse(options[:end_date]).to_s if options[:end_date]
+    	dates = options[:start_date] ? Chronic.parse(options[:start_date]).strftime('%a %d %b %Y').to_s : ""
+    	dates << " -- " + dates = Chronic.parse(options[:end_date]).strftime('%a %d %b %Y').to_s if options[:end_date]
     	dates = "N/A" if dates == ""
     	return dates
     end
     if options[:type] == "todo"
-    	options[:due] ? dates = Chronic.parse(options[:due]).to_s : "No due date"
+    	options[:due] ? dates = Chronic.parse(options[:due]).strftime('%a %d %b %Y').to_s : "No due date"
   	end
   end
   def format_priority(priority)
@@ -25,5 +25,8 @@ module Listable
     else
     	raise UdaciListErrors::InvalidPriorityValue.new, 'Invalid priority value.'
     end
+  end
+  def all
+
   end
 end
