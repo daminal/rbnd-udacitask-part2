@@ -21,7 +21,15 @@ class UdaciList
       puts "#{e.class}: #{e.message}"
   end
   def delete(index)
-    @items.delete_at(index - 1)
+    begin
+      if index.next > @items.count
+        raise UdaciListErrors::IndexExceedsListSize.new, 'The index exceeds the list size.'
+      else
+        @items.delete_at(index - 1)
+      end
+    end
+    rescue StandardError => e
+    puts "#{e.class}: #{e.message}"      
   end
   def all
     puts "-" * @title.length
