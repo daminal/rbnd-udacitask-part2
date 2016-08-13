@@ -10,6 +10,7 @@ require_relative "lib/event"
 require_relative "lib/link"
 
 list = UdaciList.new(title: "Julia's Stuff")
+list.all
 list.add("todo", "Buy more cat food", due: "2016-02-03", priority: "low")
 list.add("todo", "Sweep floors", due: "2016-01-30")
 list.add("todo", "Buy groceries", priority: "high")
@@ -36,7 +37,7 @@ new_list.add("link", "http://ruby-doc.org")
 # ----------------------------
 new_list.add("image", "http://ruby-doc.org") # Throws InvalidItemType error
 new_list.delete(9) # Throws an IndexExceedsListSize error
-new_list.add("todo", "Hack some portals", priority: "super high") # throws an InvalidPriorityValue error
+#new_list.add("todo", "Hack some portals", priority: "super high") # throws an InvalidPriorityValue error
 
 # DISPLAY UNTITLED LIST
 # ---------------------
@@ -45,3 +46,8 @@ new_list.all
 # DEMO FILTER BY ITEM TYPE
 # ------------------------
 new_list.filter("event")
+
+# Demo new features
+new_list.add("event", "Vacation", end_date: "Dec 30")
+new_list.all
+

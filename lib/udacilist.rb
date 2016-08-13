@@ -35,8 +35,12 @@ class UdaciList
     puts "-" * @title.length
     puts @title 
     puts "-" * @title.length
-    @items.each_with_index do |item, position|
-      puts "#{position + 1}) #{item.details}"
+    if @items.empty?
+      puts "This list is empty." 
+    else
+      @items.each_with_index do |item, position|
+        puts "#{position + 1}) #{item.details}"
+      end
     end
   end
   def filter(type)
