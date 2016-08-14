@@ -1,4 +1,4 @@
-# This commit: general: eliminated extra lines of code.
+# This commit: general: eliminated extra lines of code, Gemfile: created nonfunctional gemfile.
 
 #
 # Ideas for improvements

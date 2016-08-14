@@ -1,13 +1,18 @@
 # What you added to Udacitask 2.0
 # -------------------------------------------------------
 1. What is the gem of your choice and how did you use it?
+I used terminal-table to tabulate output of funcs all and filter. 
 2. Describe the 2 features you added to the project.
-  a) Feature 1...
-  b) Feature 2...
+  a) Errors and overdo ‘todo’s are colorized
+  b) all() in Udacilist puts “empty list” when there are no items to list.
 
 # REFLECTIONS
 # -------------------------------------------------------
 1. How long did you spend working on this project?
+I spent 15 hours. 
 2. What was the most rewarding challenge you conquered?
+I made rescue statements to keep the app going where possible. 
 3. What two additional features did you build? Why?
+I built the aforementioned features to focus the harried user on overdue items and alert them to errors. 
 4. Where do you still have room to grow?
+I want to learn what kind of code I can place in the error class blocks. 

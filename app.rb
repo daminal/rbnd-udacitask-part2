@@ -1,7 +1,4 @@
-require 'chronic'
-require 'colorize'
-require 'terminal-table'
-# Find a third gem of your choice and add it to your project
+require 'bundler/setup'
 require 'date'
 require_relative "lib/listable"
 require_relative "lib/errors"
