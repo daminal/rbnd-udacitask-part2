@@ -1,17 +1,16 @@
 class UdaciList
   attr_reader :title, :items
-  @@types = []
+  @@types = ['todo', 'event', 'link']
 
-  def initialize(options={title: "Untitled List"})
+  def initialize(options={title: 'Untitled List'})
     @title = options[:title]
     @items = []
   end
   def add(type, description, options={})
     @@types.push type unless @@types.include?(type.downcase!)
-    #@items.push %Q{#{%Q{type}.capitalize}Item.new(description, options)}
-    @items.push TodoItem.new(description, options) if type == "todo"
-    @items.push EventItem.new(description, options) if type == "event"
-    @items.push LinkItem.new(description, options) if type == "link"
+    @items.push TodoItem.new(description, options) if type == 'todo'
+    @items.push EventItem.new(description, options) if type == 'event'
+    @items.push LinkItem.new(description, options) if type == 'link'
     unless @@types.include?(type) 
       raise UdaciListErrors::InvalidItemType.new, 'Invalid list item type.'.magenta
     end
@@ -39,7 +38,7 @@ class UdaciList
     rows << [@title]
     rows << ["-" * @title.length]
     if @items.empty?
-      rows << ["This list is empty."] 
+      rows << ['This list is empty.'] 
     else
       @items.each_with_index do |item, position|
         rows << ["#{position + 1}) #{item.details}"]
@@ -51,9 +50,9 @@ class UdaciList
     unless @@types.include?(type)
       raise UdaciListErrors::NoTypeError, 'There is no such item type.'.magenta
     end
-    selections = LinkItem.all if type == "link"
-    selections = EventItem.all if type == "event"
-    selections = TodoItem.all if type == "todo"
+    selections = LinkItem.all if type == 'link'
+    selections = EventItem.all if type == 'event'
+    selections = TodoItem.all if type == 'todo'
     unless selections.any?
       raise UdaciListErrors::NoItemsError, 'This list contains no items of this type.'.magenta
     else
