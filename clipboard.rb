@@ -1,4 +1,5 @@
-# This commit: "App.rb: reinserted require statements to enable app."
+# This commit: 
+"listable: colorized priorities"
 
 #
 # Ideas for improvements
@@ -19,21 +20,15 @@
 # 
 # 
 # gemfile
-gem 'chronic', '0.10.2'
-gem 'colorize', '0.8.1'
-gem 'terminal-table' '1.6.0'
-
 # 
 # 
 # Questions
 # listable.rb: format_date: Why did I have to have "return dates" rather than just "dates"
+# UdaciList.add: is there a way that in one line of code I could add an item to the correct class?
 # 
 # 
 # 
 # 
-# 
-logic for due date colorizer
-if there is a due date, then parse it, then check whether it's greater than today and colorize it.  Otherwise, "no due date."
 # 
 # 
 # 

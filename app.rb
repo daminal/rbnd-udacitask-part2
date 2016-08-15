@@ -53,6 +53,6 @@ new_list.add("event", "Vacation", end_date: "Dec 30")
 new_list.add("todo", "Take a break", due: "January 1, 2016")
 
 new_list.all
-new_list.filter("prevent")
+#new_list.filter("prevent")
 
 

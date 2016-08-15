@@ -21,11 +21,11 @@ module Listable
   end
   def format_priority(priority)
     if priority == "high"
-    	return " ⇧" 
+    	return " ⇧".light_red 
     elsif priority == "medium"
-    	return " ⇨" 
+    	return " ⇨".light_yellow
     elsif priority == "low"
-    	return " ⇩" 
+    	return " ⇩".light_blue
     elsif !priority
     	return "" 
     else
