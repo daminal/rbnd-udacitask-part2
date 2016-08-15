@@ -1,19 +1,18 @@
 class UdaciList
   attr_reader :title, :items
-  
-  def types
-    ['event', 'todo', 'link']
-  end
+  @@types = []
+
   def initialize(options={title: "Untitled List"})
     @title = options[:title]
     @items = []
   end
   def add(type, description, options={})
-    type = type.downcase
+    @@types.push type unless @@types.include?(type.downcase!)
+    #@items.push %Q{#{%Q{type}.capitalize}Item.new(description, options)}
     @items.push TodoItem.new(description, options) if type == "todo"
     @items.push EventItem.new(description, options) if type == "event"
     @items.push LinkItem.new(description, options) if type == "link"
-    unless types.include?(type) 
+    unless @@types.include?(type) 
       raise UdaciListErrors::InvalidItemType.new, 'Invalid list item type.'.magenta
     end
     rescue StandardError => e
@@ -49,7 +48,7 @@ class UdaciList
     print_table(rows)
   end
   def selection(type)
-    unless types.include?(type)
+    unless @@types.include?(type)
       raise UdaciListErrors::NoTypeError, 'There is no such item type.'.magenta
     end
     selections = LinkItem.all if type == "link"
@@ -64,7 +63,7 @@ class UdaciList
   def filter(type)
     rows = []
     rows << ["-" * @title.length]
-    rows << ["#{@title}: #{type.capitalize}s"]
+    rows << ["#{@title}: #{type.downcase.capitalize}s"]
     rows << ["-" * @title.length]
     selection(type).each_with_index do |item, position|
       rows << ["#{position + 1}) #{item.details}"]

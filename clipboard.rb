@@ -1,4 +1,4 @@
-# This commit: general: eliminated extra lines of code, Gemfile: created nonfunctional gemfile.
+# This commit: "App.rb: reinserted require statements to enable app."
 
 #
 # Ideas for improvements
