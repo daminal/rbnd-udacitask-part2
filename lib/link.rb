@@ -1,18 +1,18 @@
 class LinkItem
   include Listable
   attr_reader :description, :site_name, :type
-  @@links = []
+  @@items = []
 
   def initialize(url, options={})
     @description = url
     @site_name = options[:site_name] ? options[:site_name] : "None"
     @type = "link"
-    @@links << self
+    @@items << self
   end
   def details
     "Site name: " + @site_name
   end
   def self.all
-    @@links
+    @@items
   end
 end

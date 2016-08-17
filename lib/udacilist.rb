@@ -28,50 +28,34 @@ class UdaciList
     rescue StandardError => e
     puts "#{e.class}: #{e.message}"      
   end
-  def print_table(table)
+  def print(table)
     puts table
   end
   def headings
     ['', 'Type', 'Details']
   end
-  def items 
+  def items (options = {})
     rows = []
-    if @items.empty?
+    items = options[:filter]? @items.select{|item| item.type == options[:filter]} : @items
+    if items.empty?
       rows << ['This list is empty.'] 
     else
-      @items.each_with_index do |item, position|
+      items.each_with_index do |item, position|
         rows << ["#{position + 1}. #{item.description}", item.type, item.details]
       end
     end
     return rows
   end
-  def all
-    rows = []
-    table = Terminal::Table.new title: @title, headings: headings(), rows: items() 
-    print_table(table)
+  def all(options = {})
+    title = options[:filter] ? @title + ': ' + options[:filter].capitalize + 's' : @title
+    table = Terminal::Table.new title: title, headings: headings(), rows: items(options) 
+    print(table)
   end
-  def selection(type)
+  def filter(type)
     unless @@types.include?(type)
       raise UdaciListErrors::InvalidType, 'Invalid item type.'.magenta
     end
-    selections = LinkItem.all if type == 'link'
-    selections = EventItem.all if type == 'event'
-    selections = TodoItem.all if type == 'todo'
-    unless selections.any?
-      raise UdaciListErrors::NoItemsError, 'This list contains no items of this type.'.magenta
-    else
-      return selections
-    end
-  end
-  def filter(type)
-    rows = []
-    rows << ["-" * @title.length]
-    rows << ["#{@title}: #{type.downcase.capitalize}s"]
-    rows << ["-" * @title.length]
-    selection(type).each_with_index do |item, position|
-      rows << ["#{position + 1}) #{item.details}"]
-    end
-    print_table(rows)
+    all(filter: type)
   end
 end
 

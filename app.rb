@@ -47,7 +47,7 @@ new_list.all
 
 # DEMO FILTER BY ITEM TYPE
 # ------------------------
-#new_list.filter("event")
+new_list.filter("event")
 
 new_list.add("event", "Vacation", end_date: "Dec 30")
 new_list.add("todo", "Take a break", due: "January 1, 2016")

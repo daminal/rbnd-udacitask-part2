@@ -1,6 +1,6 @@
 # This commit: 
-"General: removed options hash from format_date and Item classes, simplified details funcs"
-#
+"Moved Udacilist.selections() logic to all."
+# 
 # Ideas for improvements
 # 
 # Event.rb
@@ -38,17 +38,17 @@
 # IOW, each Item sends over {@description, @type, @details.}
 # 
 # Next steps (start with simplest changes):
-# Udacilist: replace func add NoType error with InvalidType error and us in selection
+# XUdacilist: replace func add NoType error with InvalidType error and us in selection
 # and change name in Errors::UdaciListErrors. Create func headings, func items.
-# Remove item number and item_number from all. 
-# So all calls these: item_number, headings, Item.  
-# Move table formatting to it from print_table. Change all to take a hash from Item.
-# Change each item to send description, type, and details. 
+# XRemove item number and item_number from all. 
+# XSo all calls these: item_number, headings, Item.  
+# XMove table formatting to it from print_table. Change all to take a hash from Item.
+# XChange each item to send description, type, and details. 
 # 
-# Each Item class (test after each step):
-# Remove format_description (then listable.format_description)
+# XEach Item class (test after each step):
+# XRemove format_description (then listable.format_description)
 # 
-# 
+# Change Udacilist.selection:
 # 
 # 
 # 
