@@ -1,6 +1,5 @@
 # This commit: 
-"listable: colorized priorities"
-
+"UdaciList: new funcs items, headings to slim down func all"
 #
 # Ideas for improvements
 # 
@@ -29,13 +28,25 @@
 # 
 # 
 # 
+# This is how func udacilist > all will work now. 
+# it is now a comsomething that determines if the list is empty and collects a hash
+# with added item numbering.
+# Format: {:title, :headings, :items(with numbering)}
+# Sources: @title, ['', 'type', 'details'], [func item_num, Item hash from Item, 
+# parsed by: Udacilist.description, Listable.format_date, Item.details.]
+# It sends that hash to print_table, which just hands the hash to terminal-table.
+# IOW, each Item sends over {@description, @type, @details.}
 # 
+# Next steps (start with simplest changes):
+# Udacilist: replace func add NoType error with InvalidType error and us in selection
+# and change name in Errors::UdaciListErrors. Create func headings, func items.
+# Remove item number and item_number from all. 
+# So all calls these: item_number, headings, Item.  
+# Move table formatting to it from print_table. Change all to take a hash from Item.
+# Change each item to send description, type, and details. 
 # 
-# 
-# 
-# 
-# 
-# 
+# Each Item class (test after each step):
+# Remove format_description (then listable.format_description)
 # 
 # 
 # 

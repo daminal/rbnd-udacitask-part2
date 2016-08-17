@@ -7,12 +7,12 @@ class UdaciList
     @items = []
   end
   def add(type, description, options={})
-    @@types.push type unless @@types.include?(type.downcase!)
+    type.downcase!
     @items.push TodoItem.new(description, options) if type == 'todo'
     @items.push EventItem.new(description, options) if type == 'event'
     @items.push LinkItem.new(description, options) if type == 'link'
     unless @@types.include?(type) 
-      raise UdaciListErrors::InvalidItemType.new, 'Invalid list item type.'.magenta
+      raise UdaciListErrors::InvalidType.new, 'Invalid item type.'.magenta
     end
     rescue StandardError => e
       puts "#{e.class}: #{e.message}"
@@ -28,27 +28,31 @@ class UdaciList
     rescue StandardError => e
     puts "#{e.class}: #{e.message}"      
   end
-  def print_table(rows)
-    table = Terminal::Table.new :rows => rows
+  def print_table(table)
     puts table
   end
-  def all
+  def headings
+    ['', 'Type', 'Details']
+  end
+  def items
     rows = []
-    rows << ["-" * @title.length]
-    rows << [@title]
-    rows << ["-" * @title.length]
     if @items.empty?
       rows << ['This list is empty.'] 
     else
       @items.each_with_index do |item, position|
-        rows << ["#{position + 1}) #{item.details}"]
+        rows << ["#{position + 1} #{item.details}"]
       end
     end
-    print_table(rows)
+    return rows
+  end
+  def all
+    rows = []
+    table = Terminal::Table.new title: @title, headings: headings(), rows: items() 
+    print_table(table)
   end
   def selection(type)
     unless @@types.include?(type)
-      raise UdaciListErrors::NoTypeError, 'There is no such item type.'.magenta
+      raise UdaciListErrors::InvalidType, 'Invalid item type.'.magenta
     end
     selections = LinkItem.all if type == 'link'
     selections = EventItem.all if type == 'event'

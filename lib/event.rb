@@ -1,10 +1,11 @@
 class EventItem
   include Listable
-  attr_reader :description, :start_date, :end_date
+  attr_reader :description, :start_date, :end_date, :type
   @@items = []
 
   def initialize(description, options={})
     @description = description
+    @type = 'event'
     if (options[:end_date] && !options[:start_date])
       raise UdaciListErrors::InvalidDateError.new, 'Cannot enter end_date without start_date.'.magenta
     end
@@ -13,8 +14,9 @@ class EventItem
     @@items << self
   end
   def details
-    format_description(@description) + "Event dates: " + 
-    format_date(options = {type: "event", start_date: @start_date, end_date: @end_date})
+    dates = format_date(options = {type: @type, start_date: @start_date, 
+      end_date: @end_date})
+    {description: @description, type: @type, details: dates}
   end
   def self.all
     @@items
