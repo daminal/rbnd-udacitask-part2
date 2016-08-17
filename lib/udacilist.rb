@@ -34,13 +34,13 @@ class UdaciList
   def headings
     ['', 'Type', 'Details']
   end
-  def items
+  def items 
     rows = []
     if @items.empty?
       rows << ['This list is empty.'] 
     else
       @items.each_with_index do |item, position|
-        rows << ["#{position + 1} #{item.details}"]
+        rows << ["#{position + 1}. #{item.description}", item.type, item.details]
       end
     end
     return rows

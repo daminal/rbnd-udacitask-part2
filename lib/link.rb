@@ -10,7 +10,7 @@ class LinkItem
     @@links << self
   end
   def details
-    format_description(@description) + "Site name: " + @site_name
+    "Site name: " + @site_name
   end
   def self.all
     @@links

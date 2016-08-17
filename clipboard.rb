@@ -1,5 +1,5 @@
 # This commit: 
-"UdaciList: new funcs items, headings to slim down func all"
+"General: removed options hash from format_date and Item classes, simplified details funcs"
 #
 # Ideas for improvements
 # 
