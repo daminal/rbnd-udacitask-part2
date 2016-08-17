@@ -1,9 +1,9 @@
 # What you added to Udacitask 2.0
 # -------------------------------------------------------
 1. What is the gem of your choice and how did you use it?
-I used terminal-table to tabulate output of funcs all and filter. 
+I used terminal-table to tabulate output of func all. 
 2. Describe the 2 features you added to the project.
-  a) Errors and overdo ‘todo’s are colorized
+  a) Errors and overdue ‘todo’s are colorized
   b) all() in Udacilist puts “empty list” when there are no items to list.
 
 # REFLECTIONS

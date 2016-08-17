@@ -1,11 +1,11 @@
 module UdaciListErrors
-	class InvalidType < StandardError 
+	class InvalidItemType < StandardError 
 	end
 	class IndexExceedsListSize < StandardError
 	end
 	class InvalidPriorityValue < StandardError
 	end
-	class NoItemsError < StandardError
+	class NoItems < StandardError
 	end
 end
 

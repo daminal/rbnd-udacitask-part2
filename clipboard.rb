@@ -1,6 +1,5 @@
 # This commit: 
-"Moved Udacilist.selections() logic to all."
-# 
+# "Cleaned up App.rb, Fixed error implementation in UdaciList.delete."
 # Ideas for improvements
 # 
 # Event.rb

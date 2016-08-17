@@ -12,17 +12,17 @@ class UdaciList
     @items.push EventItem.new(description, options) if type == 'event'
     @items.push LinkItem.new(description, options) if type == 'link'
     unless @@types.include?(type) 
-      raise UdaciListErrors::InvalidType.new, 'Invalid item type.'.magenta
+      raise UdaciListErrors::InvalidItemType.new, 'Invalid item type.'.magenta
     end
     rescue StandardError => e
       puts "#{e.class}: #{e.message}"
   end
-  def delete(index)
+  def delete(position)
     begin
-      if index.next > @items.count
+      if position > @items.count
         raise UdaciListErrors::IndexExceedsListSize.new, 'The index exceeds the list size.'.magenta
       else
-        @items.delete_at(index - 1)
+        @items.delete_at(position - 1)
       end
     end
     rescue StandardError => e
@@ -53,7 +53,7 @@ class UdaciList
   end
   def filter(type)
     unless @@types.include?(type)
-      raise UdaciListErrors::InvalidType, 'Invalid item type.'.magenta
+      raise UdaciListErrors::InvalidItemType.new, 'Invalid item type.'.magenta
     end
     all(filter: type)
   end
